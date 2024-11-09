@@ -26,5 +26,5 @@ console.log("car: " , car);
 
 setBrand("BBB")
 console.log("car: " , car);
-
+;
 
