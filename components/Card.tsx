@@ -1,9 +1,11 @@
-import { StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 import React from "react";
+import Images from "@/assets/images/Images";
 
 const Card = (props: any) => {
   return (
     <View style={styles.container}>
+      <Image source={Images.favicon()} style={styles.icon} />
       <Text style={styles.name}>{props.name}</Text>
       <Text style={styles.price}>{props.price + "$"}</Text>
     </View>
@@ -27,4 +29,8 @@ const styles = StyleSheet.create({
     fontSize: 25,
     fontWeight: "bold",
   },
+  icon:{
+    width: 100 , 
+    height:100 ,
+  }
 });
