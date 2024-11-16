@@ -11,7 +11,7 @@ const Card = (props: any) => {
     </View>
   );
 };
-
+  
 export default Card;
 
 const styles = StyleSheet.create({
