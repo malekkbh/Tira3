@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import Card from "@/components/Card";
 import data from "@/constants/data";
@@ -6,10 +6,19 @@ import data from "@/constants/data";
 const index = () => {
   const renderCards = () => {
     const cards = data.map((product) => {
-      return <Card name={product.name} price={product.price} />;
+      return (
+        <Card 
+        name={product.name} 
+        price={product.price} 
+        img={product.img} />
+      );
     });
 
     return cards;
+  };
+
+  const productsStr = () => {
+    return <Text style={styles.txt}>{JSON.stringify(data)}</Text>;
   };
 
   return (
@@ -22,8 +31,8 @@ const index = () => {
       ]} */}
 
       {/* <View style={styles.line} /> */}
-
-      {renderCards()}
+      <ScrollView>{renderCards()}</ScrollView>
+      {/* <ScrollView>{productsStr()}</ScrollView> */}
     </View>
   );
 };
@@ -37,7 +46,7 @@ const styles = StyleSheet.create({
     paddingTop: 45,
   },
   txt: {
-    fontSize: 70,
+    fontSize: 30,
     marginLeft: 20,
   },
   line: {
