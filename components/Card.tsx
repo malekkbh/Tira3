@@ -6,16 +6,18 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigation } from "expo-router";
 import ScreenNames from "@/constants/ScreenNames";
 import { AntDesign } from "@expo/vector-icons";
+import Tira3Context from "@/store/Tira3Contetxt";
 
 const Card = (props: any) => {
   const navigation = useNavigation();
+  const context = useContext(Tira3Context);
   var amountValue = 0;
-  const [amount, setAmount] = useState(0);
-  const totalPrice = amount * props.price + '$'
+  const [amount, setAmount] = useState(props.amount || 0);
+  const totalPrice = amount * props.price + "$";
   // const [state , setState ] = useState(initValue)
 
   const onCardPress = () => {
@@ -23,12 +25,20 @@ const Card = (props: any) => {
     navigation.navigate(ScreenNames.Products, { product: data });
   };
 
-  console.log("amount : ", amount);
+  console.log("amount : ", props.amount);
   console.log("amount value : ", amountValue);
 
   const onPlusPress = () => {
     setAmount(amount + 1);
-    amountValue = amount + 1;
+
+    const product = {
+      name: props.name,
+      price: props.price,
+      img: props.img,
+      amount :amount + 1,
+    };
+
+    context.setCart([...context.cart, product]);
   };
 
   const onMinusPress = () => {
