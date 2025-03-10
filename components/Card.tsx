@@ -28,17 +28,52 @@ const Card = (props: any) => {
   console.log("amount : ", props.amount);
   console.log("amount value : ", amountValue);
 
-  const onPlusPress = () => {
+  const getProductIndexFromCart = (name: string) => {
+    return context.cart.findIndex((order) => order.name == name);
+  };
+
+  const onPlusPressArray = () => {
     setAmount(amount + 1);
+
+    const productIndex = getProductIndexFromCart(props.name);
+
+    if (productIndex == -1) {
+      // -1 mean no such order
+      const product = {
+        name: props.name,
+        price: props.price,
+        img: props.img,
+        amount: amount + 1,
+      };
+
+      context.setCart([...context.cart, product]);
+
+      return;
+    }
+
+    const cartCopy = context.cart;
+
+    cartCopy[productIndex].amount = amount + 1;
+
+    context.setCart([...cartCopy]);
+  };
+
+  const onPlusPress = () => {
+    const newAmount = amount + 1;
+    setAmount(newAmount);
+
+    const cartCopy = context.cart;
+    // const cartCopy = context["cart"];
 
     const product = {
       name: props.name,
       price: props.price,
       img: props.img,
-      amount :amount + 1,
+      amount: amount + 1,
     };
 
-    context.setCart([...context.cart, product]);
+    cartCopy[props.name] = product;
+    context.setCart({...cartCopy})
   };
 
   const onMinusPress = () => {
@@ -47,7 +82,8 @@ const Card = (props: any) => {
 
   useEffect(() => {
     // console.log("mount change: ", amount);
-  }, [amount]);
+    setAmount(props.amount || 0);
+  }, [props.amount]);
 
   return (
     <TouchableOpacity onPress={() => onCardPress()}>

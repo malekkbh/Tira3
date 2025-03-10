@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Tira3Context from "./Tira3Contetxt";
 
 const Tira3Provider = (props) => {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState({});
 
   const providerValue = {
     cart,
