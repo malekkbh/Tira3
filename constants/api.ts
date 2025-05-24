@@ -5,6 +5,11 @@ export const createUser = async (body) => {
   return await fetchAPI(route, body, "POST");
 };
 
+export const getAllproductsFromAPI = async () => {
+  const route = "/getAllproducts";
+  return await fetchAPI(route);
+};
+
 const fetchAPI = async (route, body, method = "GET") => {
   const url = baseURL + route;
 
