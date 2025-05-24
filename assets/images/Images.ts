@@ -1,11 +1,5 @@
 const Images = {
-  icon: () => require("./icon.png"),
-  favicon: () => require("./favicon.png"),
-  banana: () => require("./banana.jpeg"),
-  batata: () => require("./batata.webp"),
-  batengan: () => require("./batengan.jpeg"),
-  tomamto: () => require("./tomamto.jpeg"),
-  toot: () => require("./toot.jpeg"),
-};
+  catGray : () => require('./cat.jpeg'),
+}
 
-export default Images;
+export default Images

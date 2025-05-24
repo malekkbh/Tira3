@@ -1,7 +1,8 @@
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import Card from "@/components/Card";
 import data from "@/constants/data";
+import Images from "@/assets/images/Images";
 
 const index = () => {
   const renderCards = () => {
@@ -23,6 +24,10 @@ const index = () => {
 
   return (
     <View style={styles.container}>
+
+      <Text>Code Zone</Text>
+      <Image style={styles.image} source={Images.catGray()}/>
+
       {/* {[
         <Card name={data[0].name} price={data[0].price} />,
         <Card name={data[1].name} price={data[1].price} />,
@@ -31,7 +36,7 @@ const index = () => {
       ]} */}
 
       {/* <View style={styles.line} /> */}
-      <ScrollView>{renderCards()}</ScrollView>
+      {/* <ScrollView>{renderCards()}</ScrollView> */}
       {/* <ScrollView>{productsStr()}</ScrollView> */}
     </View>
   );
@@ -53,4 +58,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     width: "100%",
   },
+  image:{
+    width:100,
+    height:100
+  }
 });
